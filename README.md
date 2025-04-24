@@ -1,4 +1,25 @@
-<div class="markdown prose w-full break-words dark:prose-invert light"><h1>Automated Thumbnail Changer</h1><p>This repository contains scripts that automate the process of changing YouTube video thumbnails. The scripts are written in Python and use the YouTube Data API.</p><h2>File Structure</h2><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-">├── clients
+# Automated Thumbnail Changer
+
+#### Submission by Vlad-Ioan Durdeu
+
+## Introduction
+
+This was a quick but fun automation project I threw together to save time messing with YouTube thumbnails. The idea was simple: cycle through different thumbnails and titles on a video, check how each one performs, and let the data tell you what works best.
+
+Built it using Python and the YouTube Data API. No fluff. Just scripts that connect, update, and rotate thumbnails and titles based on folders and config files you control.
+
+## What It Does
+
+You drop your thumbnail images in folders  
+Point the script at a video  
+It rotates thumbnails and optionally titles too  
+Each one runs for a set duration  
+At the end, it gives you a view count comparison to help you decide what actually performs
+
+## File Structure
+
+```
+├── clients
 │   ├── analytics.py
 │   ├── yt_stats.py
 │   ├── youtube_analytics.py
@@ -14,8 +35,42 @@
 ├── config.ini
 ├── requirements.txt
 └── run.py
-</code></div></div></pre><ul><li>The <code>clients</code> directory contains scripts that interact with the YouTube Data API.</li><li>The <code>creds</code> directory contains API keys and secrets required to authenticate with the YouTube Data API.</li><li>The <code>thumbnails</code> directory contains folders with thumbnails that will be switched around.</li><li><code>config.ini</code> contains the configuration data, such as the API key and channel ID.</li><li><code>requirements.txt</code> contains the dependencies required to run the scripts.</li><li><code>run.py</code> contains the main code to run the scripts.</li></ul><h2>How to Use</h2><ol><li>Clone the repository:</li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/username/automate-thumbnail-changer.git
-</code></div></div></pre><ol start="2"><li>Install the required dependencies:</li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">pip install -r requirements.txt
-</code></div></div></pre><ol start="3"><li><p>Set up the configuration data:</p><p>a. Replace <code>HERE GOES YOUR API KEY</code> and <code>HERE GOES YOUR CHANNEL ID</code> in <code>config.ini</code> with your YouTube Data API key and channel ID, respectively.</p><p>b. Move your <code>client_secret.json</code> file to the <code>creds</code> folder.</p></li><li><p>Add the thumbnail folders to the <code>thumbnails</code> directory.</p></li><li><p>Run the script:</p></li></ol><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span></span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">python run.py
-</code></div></div></pre><ol start="6"><li>Follow the prompts in the command line interface to choose which script to run and which video to change the thumbnail for.</li></ol><h2>Scripts</h2><ul><li><code>rotate_thumbnails</code>: Rotates through the thumbnails in the specified folders for a specified number of times, displaying each thumbnail for a specified amount of time. Returns the number of views for each thumbnail.</li><li><code>rotate_thumbnails_titles</code>: Same as <code>rotate_thumbnails</code>, but also rotates through a list of titles.</li><li><code>rotate_titles</code>: Rotates through a list of titles, displaying each title for a specified amount of time. Returns the number of views for each title.</li></ul></div>
- 
+```
+
+## How to Use
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourname/automated-thumbnail-changer.git
+cd automated-thumbnail-changer
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure it
+
+- Fill in `config.ini` with your API key and channel ID  
+- Drop your `client_secret.json` in the `creds/` folder
+
+### 4. Add thumbnails
+
+Put your test images in the `thumbnails/` folders. You can create new folders or reuse the ones there.
+
+### 5. Run the script
+
+```bash
+python run.py
+```
+
+It will ask what script to run and guide you through selecting thumbnails and titles to rotate.
+
+## Script Options
+
+- `rotate_thumbnails`: cycles through thumbnails only, tracks view count
+- `rotate_thumbnails_titles`: rotates both thumbnails and video titles
+- `rotate_titles`: just title testing, no image changes
