@@ -6,7 +6,7 @@
 
 This was a quick but fun automation project I threw together to save time messing with YouTube thumbnails. The idea was simple: cycle through different thumbnails and titles on a video, check how each one performs, and let the data tell you what works best.
 
-Built it using Python and the YouTube Data API. No fluff. Just scripts that connect, update, and rotate thumbnails and titles based on folders and config files you control.
+Built it using Python and the YouTube Data API. Just scripts that connect, update, and rotate thumbnails and titles based on folders and config files you control.
 
 ## What It Does
 
